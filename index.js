@@ -1,4 +1,17 @@
-"use strict";
+"use strict";// 打印命令行参数
+console.log('Process arguments:', process.argv);
+
+// 使用 yargs 库解析命令行参数
+const argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+
+// 检查是否传递了 product-id 参数
+if (!argv['product-id']) {
+    console.error('Error: Please set product-id input parameter');
+    process.exit(1);
+}
+
+// 打印传递的 product-id 参数
+console.log('Product ID:', argv['product-id']);
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
 const webhook_1 = require("@slack/webhook");
